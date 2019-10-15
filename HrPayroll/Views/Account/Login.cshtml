@@ -1,0 +1,111 @@
+﻿@model LoginViewModel
+@{
+    Layout = "";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Dark Bootstrap Admin by Bootstrapious.com</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="all,follow">
+    <!-- Bootstrap CSS-->
+    <link href="~/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Font Awesome CSS-->
+    <link href="~/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <!-- Custom Font Icons CSS-->
+    <link rel="stylesheet" href="~/css/font.css">
+    <!-- Google fonts - Muli-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli:300,400,700">
+    <!-- theme stylesheet-->
+    <link rel="stylesheet" href="~/css/style.default.css" id="theme-stylesheet">
+    <!-- Custom stylesheet - for your changes-->
+    <link href="~/css/custom.css" rel="stylesheet" />
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="~/img/favicon.ico">
+    <!-- Tweaks for older IEs-->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+</head>
+<body>
+    <style>
+        input:-webkit-autofill,
+        input:-webkit-autofill:hover, 
+        input:-webkit-autofill:focus,
+        textarea:-webkit-autofill,
+        textarea:-webkit-autofill:hover,
+        textarea:-webkit-autofill:focus,
+        select:-webkit-autofill,
+        select:-webkit-autofill:hover,
+        select:-webkit-autofill:focus {
+              border: none;
+              -webkit-text-fill-color: #8a8d93;
+              -webkit-box-shadow: none;
+              transition: background-color 5000s ease-in-out 0s;
+            background-color: #2d3035 !important;
+            background-image: none !important;
+            color: #8a8d93 !important;
+        }
+    </style>
+    <div class="login-page">
+        <div class="container d-flex align-items-center">
+            <div class="form-holder has-shadow">
+                <div class="row">
+                    <!-- Logo & Information Panel-->
+                    <div class="col-lg-6">
+                        <div class="info d-flex align-items-center">
+                            <div class="content">
+                                <div class="logo">
+                                    <h1>Welcome to our site</h1>
+                                </div>
+                                <p>We can make it together </p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Form Panel    -->
+                    <div class="col-lg-6">
+                        <div class="form d-flex align-items-center">
+                            <div class="content">
+                                <form method="post" class="form-validate mb-4">
+                                    <div class="form-group">
+                                        <input id="login-username" type="text"  asp-for="Email" class="input-material">
+                                        <label asp-for="Email"  class="label-material">Email</label>
+                                        <span asp-validation-for="Email" style="color:red"> </span>
+                                    </div>
+                                    <div class="form-group">
+                                        <input id="login-password" type="password" asp-for="Password" class="input-material">
+                                        <label asp-for="Password" class="label-material">Password</label>
+                                        <span asp-validation-for="Password" style="color:red"></span>
+                                    </div>
+                                   <button type="submit" asp-controller="Account" asp-action="Login" class="btn btn-primary">Login</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copyrights text-center">
+            <p>Design by Mina Farzali</p>
+            <!-- Please do not remove the backlink to us unless you support further theme's development at https://bootstrapious.com/donate. It is part of the license conditions. Thank you for understanding :)-->
+        </div>
+    </div>
+
+    <!-- JavaScript files-->
+    <script src="~/vendor/jquery/jquery.min.js"></script>
+    <script src="~/vendor/popper.js/umd/popper.min.js"></script>
+    <script src="~/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/vendor/jquery.cookie/jquery.cookie.js"></script>
+    <script src="~/vendor/chart.js/Chart.min.js"></script>
+    <script src="~/vendor/jquery-validation/jquery.validate.min.js"></script>
+    <script src="~/js/front.js"></script>
+    @section scripts
+{
+        <partial name="_ValidationScriptsPartial" />
+    }
+
+</body>
+</html>

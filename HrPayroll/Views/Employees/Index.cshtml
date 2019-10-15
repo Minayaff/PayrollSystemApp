@@ -1,0 +1,262 @@
+﻿@model PaginationEmployeeVM
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-content">
+    <!-- Page Header-->
+    <div class="page-header no-margin-bottom">
+        <div class="container-fluid">
+            <h2 class="h5 no-margin-bottom">Employee Form</h2>
+        </div>
+    </div>
+
+    <!-- Breadcrumb-->
+    <div class="container-fluid">
+        <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Home">Home</a></li>
+        </ul>
+    </div>
+    <section class="no-padding-top">
+        <div class="container-fluid">
+            <div class="row">
+                <!-- Basic Form-->
+                <div class="col-lg-12">
+                    <div class="block">
+                        <div class="title"><strong class="d-block">Employee List</strong><span class="d-block">All data about employee</span></div>
+                        <div class="block-body">
+                            @if (User.IsInRole(StaticData.AdminRole) || User.IsInRole(StaticData.HRRole))
+                            {
+                                <p>
+                                    <a asp-action="Create">Create New Employee</a>
+                                </p>
+
+                            }
+
+                            @if (User.IsInRole(StaticData.PayrollSpecialistRole))
+                            {
+                                <p>
+                                    @if (ViewBag.Success == "true")
+                                    {
+                                        <span>Bu aylıq maaşlar hesablandı</span>
+                                    }
+                                    else
+                                    {
+                                        <a class="btn btn-primary" href="@Url.Action("Index", "Payroll")">CALCULATE SALARIES</a>
+                                    }
+                                </p>
+                            }
+                            <label>Search</label>
+                            <input id="searchValue" style="width: 35%;" type="search" class="form-control form-control-sm" />
+
+                            <div style="overflow-x:auto;">
+
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                Role
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.Employee.Name)
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.Employee.Surname)
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.Employee.FatherName)
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.Employee.Birthdate)
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.Employee.Adress)
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.Employee.RegisterAdress)
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.Employee.PassportId)
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.Employee.PassportExpDate)
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.Employee.Education)
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.Employee.MartialStatus)
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.Employee.Gender)
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.Employee.PhotoPath)
+                                            </th>
+                                            <th>
+                                                Base Salary
+                                            </th>
+                                            <th>
+                                                Final Salary
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model.Employees)
+                                        {
+                                            <tr class="emp">
+                                                <td identity-user="@item.AppUserId">
+                                                </td>
+                                                <td>
+                                                    @item.Name
+                                                </td>
+                                                <td>
+                                                    @item.Surname
+                                                </td>
+                                                <td>
+                                                    @item.FatherName
+                                                </td>
+                                                <td>
+                                                    @item.Birthdate
+                                                </td>
+                                                <td>
+                                                    @item.Adress
+                                                </td>
+                                                <td>
+                                                    @item.RegisterAdress
+                                                </td>
+                                                <td>
+                                                    @item.PassportId
+                                                </td>
+                                                <td>
+                                                    @item.PassportExpDate
+                                                </td>
+                                                <td>
+                                                    @item.Education
+                                                </td>
+                                                <td>
+                                                    @item.MartialStatus
+                                                </td>
+                                                <td>
+                                                    @item.Gender
+                                                </td>
+                                                <td>
+                                                    <img src="~/images/user/@item.PhotoPath" alt="Alternate Text" class="img-fluid w-100" />
+                                                </td>
+                                                <td>
+
+                                                    @item.WorkPlaces.First().Position.Salaries.First().Payment
+
+                                                </td>
+                                                <td>
+                                                    @item.finalSalary
+                                                </td>
+
+                                                @if (User.IsInRole(StaticData.AdminRole))
+                                                {
+                                                    <td>
+                                                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+
+                                                    </td>
+                                                    <td>
+                                                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+
+                                                    </td>
+                                                    if (item.AppUser == null)
+                                                    {
+
+                                                        <td>
+                                                            <a asp-action="AddRole" asp-controller="Admin" asp-route-id="@item.Id">AddRole</a>
+
+                                                        </td>
+                                                    }
+                                                    else
+                                                    {
+
+                                                        <td>
+                                                            <a asp-action="EditRole" asp-controller="Admin" asp-route-id="@item.Id">EditRole</a>
+
+                                                        </td>
+                                                    }
+                                                }
+                                                @if (User.IsInRole(StaticData.HRRole))
+                                                {
+                                                    <td>
+                                                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+
+                                                    </td>
+                                                    <td>
+                                                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+
+                                                    </td>
+                                                    <td>
+                                                        <a asp-action="Index" asp-controller="OldWorkPlaces" asp-route-id="@item.Id">OldWorkPlacesList</a>
+
+                                                    </td>
+                                                    <td>
+                                                        <a asp-action="Index" asp-controller="WorkPlaces" asp-route-id="@item.Id">WorkPlacesList</a>
+
+                                                    </td>
+                                                }
+
+                                                @if (User.IsInRole(StaticData.DepartmentHeadRole))
+                                                {
+                                                    <td>
+                                                        <a asp-action="Index" asp-controller="Bonuses" asp-route-id="@item.Id">Bonus</a>
+
+                                                    </td>
+                                                    <td>
+                                                        <a asp-action="Index" asp-controller="Penals" asp-route-id="@item.Id">Penal</a>
+
+                                                    </td>
+                                                    <td>
+                                                        <a asp-action="Index" asp-controller="Attendances" asp-route-id="@item.Id">Attendances</a>
+
+                                                    </td>
+                                                }
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @if (Model.pagination.TotalPages != 1)
+        {
+            <div class="row">
+                <div class="col-xl-12">
+                    <section>
+                        <nav>
+                            <ul class="pagination float-right">
+
+                                <li class="page-item"><a class="page-link" href="#"><i class="fas fa-angle-double-left"></i></a></li>
+
+                                @for (int i = 1; i <= Model.pagination.TotalPages; i++)
+                                {
+                                    var page = new Dictionary<string, string>()
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    {
+                                    { "page", i.ToString() }
+                                };
+
+                                    <li class="page-item"><a class="page-link active" asp-controller="Employees" asp-action="Index" asp-all-route-data="page">@i</a></li>
+                                }
+
+                                <li class="page-item"><a class="page-link" href="#"><i class="fas fa-angle-double-right"></i></a></li>
+                            </ul>
+                        </nav>
+                    </section>
+                </div>
+            </div>
+        }
+    </section>
+</div>
+
+
+
+

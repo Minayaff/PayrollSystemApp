@@ -1,0 +1,93 @@
+﻿@model Employee
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="page-content">
+    <!-- Page Header-->
+    <div class="page-header no-margin-bottom">
+        <div class="container-fluid">
+            <h2 class="h5 no-margin-bottom">Work Place Form</h2>
+        </div>
+    </div>
+
+    <!-- Breadcrumb-->
+    <div class="container-fluid">
+        <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Home">Home</a></li>
+        </ul>
+    </div>
+    <section class="no-padding-top">
+        <div class="container-fluid">
+            <div class="row">
+                <!-- Basic Form-->
+                <div class="col-lg-12">
+                    <div class="block">
+                        <div class="title"><strong class="d-block">Work Place List</strong><span class="d-block">All data about employee`s workplace</span></div>
+                            <div class="block-body">
+
+                                <p>
+                                    <a asp-action="Create" asp-controller="WorkPlaces" asp-route-id="@Model.Id">Create New Work Place</a>
+                                </p>
+
+
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                               Company
+                                            </th>
+                                            <th>
+                                             Branch
+                                            </th>
+                                            <th>
+                                               Department
+                                            </th>
+                                            <th>
+                                             Position                                        
+                                            </th>
+                                            <th>
+                                                EntryDate
+                                            </th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model.WorkPlaces)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Branch.Company.Name)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Branch.Name)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Position.Department.Name)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Position.Name)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.EntryDate)
+                                                </td>
+
+                                                <td>
+                                                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+

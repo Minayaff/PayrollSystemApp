@@ -1,0 +1,99 @@
+﻿@model Employee
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-content">
+    <!-- Page Header-->
+    <div class="page-header no-margin-bottom">
+        <div class="container-fluid">
+            <h2 class="h5 no-margin-bottom">Penal Form</h2>
+        </div>
+    </div>
+
+    <!-- Breadcrumb-->
+    <div class="container-fluid">
+        <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Home">Home</a></li>
+        </ul>
+    </div>
+    <section class="no-padding-top">
+        <div class="container-fluid">
+            <div class="row">
+                <!-- Basic Form-->
+                <div class="col-lg-12">
+                    <div class="block">
+                        <div class="title"><strong class="d-block">Penal List</strong><span class="d-block">All data about employee`s penal</span></div>
+                        <div class="block-body">
+
+                            <p>
+                                <a asp-action="Create" asp-controller="Penals" asp-route-id="@Model.Id">Add penal for employee</a>
+                            </p>
+                            <select class="Search_Select_Penal" name="months">
+                                <option value=''>--Select Month--</option>
+                                <option selected value='1'>Janaury</option>
+                                <option value='2'>February</option>
+                                <option value='3'>March</option>
+                                <option value='4'>April</option>
+                                <option value='5'>May</option>
+                                <option value='6'>June</option>
+                                <option value='7'>July</option>
+                                <option value='8'>August</option>
+                                <option value='9'>September</option>
+                                <option value='10'>October</option>
+                                <option value='11'>November</option>
+                                <option value='12'>December</option>
+                            </select>
+
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            Amount
+                                        </th>
+                                        <th>
+                                            Date
+                                        </th>
+                                        <th>
+                                            Reason
+                                        </th>
+                                        <th>
+                                            IsPayed
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody class="tBody">
+                                    @foreach (var item in Model.Penals)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Amount)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Date)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Reason)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.IsPayed)
+                                            </td>
+                                            <td>
+                                                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                                                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+

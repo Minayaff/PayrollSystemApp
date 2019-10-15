@@ -1,0 +1,74 @@
+﻿@model  RegisterViewModelRole
+@{
+    ViewData["Title"] = "AddRole";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="page-content">
+    <!-- Page Header-->
+    <div class="page-header no-margin-bottom">
+        <div class="container-fluid">
+            <h2 class="h5 no-margin-bottom">Employee Form</h2>
+        </div>
+    </div>
+
+    <!-- Breadcrumb-->
+    <div class="container-fluid">
+        <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Home">Home</a></li>
+        </ul>
+    </div>
+    <section class="no-padding-top">
+        <div class="container-fluid">
+            <div class="row">
+                <!-- Basic Form-->
+                <div class="col-lg-6">
+                    <div class="block">
+                        <div class="title"><strong class="d-block">Employee List</strong><span class="d-block">All data about employee</span></div>
+                        <div class="block-body">
+                            <form asp-action="AddRole">
+                                <div asp-validation-summary="All" class="text-danger"></div>
+                                <div class="form-group">
+                                    <div class="form-group">
+                                        <label asp-for="Username" class="control-label"></label>
+                                        <input asp-for="Username" class="form-control" />
+                                        <span asp-validation-for="Username" class="text-danger"></span>
+                                    </div>
+                                    <label asp-for="Email" class="control-label"></label>
+                                    <input asp-for="Email" class="form-control" />
+                                    <span asp-validation-for="Email" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Password" class="control-label"></label>
+                                    <input asp-for="Password" class="form-control" />
+                                    <span asp-validation-for="Password" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="ComfirmPassword" class="control-label"></label>
+                                    <input asp-for="ComfirmPassword" class="form-control" />
+                                    <span asp-validation-for="ComfirmPassword" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="PhoneNumber" class="control-label"></label>
+                                    <input asp-for="PhoneNumber" class="form-control" />
+                                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                                </div>
+                                <label>Role</label>
+                                <select class="form-control" id="role" asp-for="Role" asp-items="@(new SelectList(ViewBag.Role, "Name", "Name"))">
+                                    <option value="Select Role"></option>
+                                </select>
+
+                                <div class="form-group">
+                                    <input asp-action="AddRole" asp-controller="Admin" type="submit" value="Add" class="btn btn-primary" style="padding: 0.5rem 5rem; margin-top:2rem">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+

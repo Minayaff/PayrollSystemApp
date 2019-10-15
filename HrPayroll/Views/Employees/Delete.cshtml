@@ -1,0 +1,119 @@
+﻿@model HrPayroll.Models.Employee
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-content">
+    <!-- Page Header-->
+    <div class="page-header no-margin-bottom">
+        <div class="container-fluid">
+            <h2 class="h5 no-margin-bottom">Employee Form</h2>
+        </div>
+    </div>
+
+    <!-- Breadcrumb-->
+    <div class="container-fluid">
+        <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Home">Home</a></li>
+        </ul>
+    </div>
+    <section class="no-padding-top">
+        <div class="container-fluid">
+            <div class="row">
+                <!-- Basic Form-->
+                <div class="col-lg-6">
+                    <div class="block">
+                        <div class="title"><strong class="d-block">Delete Form</strong><span class="d-block">Delete employee from system </span></div>
+                        <div class="block-body">
+                            <dl class="dl-horizontal">
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Name)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.Name)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Surname)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.Surname)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.FatherName)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.FatherName)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Birthdate)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.Birthdate)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Adress)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.Adress)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.RegisterAdress)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.RegisterAdress)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.PassportId)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.PassportId)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.PassportExpDate)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.PassportExpDate)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Education)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.Education)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.MartialStatus)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.MartialStatus)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Gender)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.Gender)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.PhotoPath)
+                                </dt>
+                                <dd>
+                                    <img src="~/images/user/@Html.DisplayFor(model => model.PhotoPath)" alt="Alternate Text" class="img-fluid w-50" />
+                                </dd>
+                            </dl>
+                            <h3>Are you sure you want to delete this?</h3>
+                            <form asp-action="Delete">
+                                <input type="hidden" asp-for="Id" />
+                                <div class="form-group">
+                                    <input asp-action="Delete" asp-controller="Employees" type="submit" value="Add" class="btn btn-primary" style="padding: 0.5rem 5rem; margin-top:2rem">
+                                </div>
+                                <a asp-action="Index">Back to List</a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+

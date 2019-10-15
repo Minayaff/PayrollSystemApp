@@ -1,0 +1,11 @@
+﻿@using HrPayroll
+@using HrPayroll.ViewModel
+@using HrPayroll.Models
+@using HrPayroll.Utilities
+@using Microsoft.AspNetCore.Identity
+
+@inject UserManager<AppUser> _userManager
+
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@addTagHelper HrPayroll.Infrastructure.TagHelpers.*, HrPayroll

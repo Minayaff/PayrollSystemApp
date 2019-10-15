@@ -1,0 +1,69 @@
+﻿@model HrPayroll.Models.Campaign
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <div class="page-content">
+        <!-- Page Header-->
+        <div class="page-header no-margin-bottom">
+            <div class="container-fluid">
+                <h2 class="h5 no-margin-bottom">Campaign Form</h2>
+            </div>
+        </div>
+
+        <!-- Breadcrumb-->
+        <div class="container-fluid">
+            <ul class="breadcrumb">
+                <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Home">Home</a></li>
+            </ul>
+        </div>
+        <section class="no-padding-top">
+            <div class="container-fluid">
+                <div class="row">
+                    <!-- Basic Form-->
+                    <div class="col-lg-6">
+                        <div class="block">
+                            <div class="title"><strong class="d-block">Edit Form</strong><span class="d-block">Edit campaign`s name</span></div>
+                            <div class="block-body">
+                                <form asp-action="Edit">
+                                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                    <input type="hidden" asp-for="Id" />
+                                    <div class="form-group">
+                                        <label class="control-label">Branch</label>
+                                        <select asp-for="BranchId" class="form-control" asp-items="ViewBag.BranchId"></select>
+                                        <span asp-validation-for="BranchId" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="Date" class="control-label"></label>
+                                        <input asp-for="Date" class="form-control" />
+                                        <span asp-validation-for="Date" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="FromAmount" class="control-label"></label>
+                                        <input asp-for="FromAmount" class="form-control" />
+                                        <span asp-validation-for="FromAmount" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="ToAmount" class="control-label"></label>
+                                        <input asp-for="ToAmount" class="form-control" />
+                                        <span asp-validation-for="ToAmount" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="Bonus" class="control-label"></label>
+                                        <input asp-for="Bonus" class="form-control" />
+                                        <span asp-validation-for="Bonus" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <input asp-action="Edit" asp-controller="Campaigns" type="submit" value="EDIT" class="btn btn-primary" style="padding: 0.5rem 5rem; margin-top:2rem">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+

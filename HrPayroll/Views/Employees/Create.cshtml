@@ -1,0 +1,103 @@
+﻿@model RegisterViewModel
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="page-content">
+    <!-- Page Header-->
+    <div class="page-header no-margin-bottom">
+        <div class="container-fluid">
+            <h2 class="h5 no-margin-bottom">Employee Form</h2>
+        </div>
+    </div>
+
+    <!-- Breadcrumb-->
+    <div class="container-fluid">
+        <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Home">Home</a></li>
+        </ul>
+    </div>
+    <section class="no-padding-top">
+        <div class="container-fluid">
+            <div class="row">
+                <!-- Basic Form-->
+                <div class="col-lg-6">
+                    <div class="block">
+                        <div class="title"><strong class="d-block">Employee List</strong><span class="d-block">All data about employee</span></div>
+                        <div class="block-body">
+                            <form asp-action="Create" enctype="multipart/form-data">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                <div class="form-group">
+                                    <label asp-for="Name" class="control-label"></label>
+                                    <input asp-for="Name" class="form-control" />
+                                    <span asp-validation-for="Name" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Surname" class="control-label"></label>
+                                    <input asp-for="Surname" class="form-control" />
+                                    <span asp-validation-for="Surname" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="FatherName" class="control-label"></label>
+                                    <input asp-for="FatherName" class="form-control" />
+                                    <span asp-validation-for="FatherName" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Birthdate" class="control-label"></label>
+                                    <input asp-for="Birthdate" class="form-control" />
+                                    <span asp-validation-for="Birthdate" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Adress" class="control-label"></label>
+                                    <input asp-for="Adress" class="form-control" />
+                                    <span asp-validation-for="Adress" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="RegisterAdress" class="control-label"></label>
+                                    <input asp-for="RegisterAdress" class="form-control" />
+                                    <span asp-validation-for="RegisterAdress" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="PassportId" class="control-label"></label>
+                                    <input asp-for="PassportId" class="form-control" />
+                                    <span asp-validation-for="PassportId" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="PassportExpDate" class="control-label"></label>
+                                    <input asp-for="PassportExpDate" class="form-control" />
+                                    <span asp-validation-for="PassportExpDate" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Education" class="control-label"></label>
+                                    <input asp-for="Education" class="form-control" />
+                                    <span asp-validation-for="Education" class="text-danger"></span>
+                                </div>
+                                <label asp-for="MartialStatus"></label>
+                                <select class="form-control" style="margin-bottom:2rem" asp-for="MartialStatus" asp-items="Html.GetEnumSelectList<MartialStatus>()">
+                                    <option selected="selected" value="">Please select</option>
+                                </select>
+                                <label asp-for="Gender"></label>
+                                <select class="form-control" asp-for="Gender" asp-items="Html.GetEnumSelectList<Gender>()">
+                                    <option selected="selected" value="">Please select</option>
+                                </select>
+                                <div class="form-group" style="margin-top:1rem">
+                                    <label asp-for="Photo" class="control-label"></label>
+                                    <input asp-for="Photo" accept="image/*" class="form-control" />
+                                    <span asp-validation-for="Photo" class="bg-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <input asp-action="Create" asp-controller="Employees" type="submit" value="Add" class="btn btn-primary" style="padding: 0.5rem 5rem; margin-top:2rem">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+

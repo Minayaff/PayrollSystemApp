@@ -1,0 +1,61 @@
+﻿@model HrPayroll.Models.Branch
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <div class="page-content">
+        <!-- Page Header-->
+        <div class="page-header no-margin-bottom">
+            <div class="container-fluid">
+                <h2 class="h5 no-margin-bottom">Branch Form</h2>
+            </div>
+        </div>
+
+        <!-- Breadcrumb-->
+        <div class="container-fluid">
+            <ul class="breadcrumb">
+                <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Home">Home</a></li>
+            </ul>
+        </div>
+        <section class="no-padding-top">
+            <div class="container-fluid">
+                <div class="row">
+                    <!-- Basic Form-->
+                    <div class="col-lg-6">
+                        <div class="block">
+                            <div class="title"><strong class="d-block">Details Form</strong><span class="d-block">All information about company`s branch</span></div>
+                            <div class="block-body">
+                                <dl class="dl-horizontal">
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.Name)
+                                    </dt>
+                                    <dd>
+                                        @Html.DisplayFor(model => model.Name)
+                                    </dd>
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.Company)
+                                    </dt>
+                                    <dd>
+                                        @Html.DisplayFor(model => model.Company.Name)
+                                    </dd>
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.IsMain)
+                                    </dt>
+                                    <dd>
+                                        @Html.DisplayFor(model => model.IsMain)
+                                    </dd>
+                                </dl>
+                            </div>
+                            <div>
+                                <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+                                <a asp-action="Index">Back to List</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
